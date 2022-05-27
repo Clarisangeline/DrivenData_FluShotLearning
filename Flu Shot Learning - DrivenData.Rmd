@@ -56,6 +56,19 @@ Variabel `health_insurance` memiliki proporsi missing values yang secara relatif
 
 ## Variabel `health_insurance`
 
+```{r}
+train$health_insurance[is.na(train$health_insurance)] = -1
+test_features$health_insurance[is.na(test_features$health_insurance)] = -1
+
+c("Train Missing Value" = sum(is.na(train$health_insurance)),
+  "Test Missing Value" = sum(is.na(test_features$health_insurance)))
+```
+
+train$h1n1_concern[is.na(train$h1n1_concern)] = median(train$h1n1_concern, na.rm = T)
+train$h1n1_knowledge[is.na(train$h1n1_knowledge)] = median(train$h1n1_knowledge, na.rm = T)
+train$behavioral_antiviral_meds[is.na(train$behavioral_antiviral_meds)] = median(train$behavioral_antiviral_meds, na.rm = T)
+train$behavioral_avoidance[is.na(train$behavioral_avoidance)] = median(train$behavioral_avoidance, na.rm = T)
+train[is.na(train)] = median(train, na.rm = T)
 
 
 ## Mengubah Categorical Variable
